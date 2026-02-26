@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "GitMarks",
+  "version": "1.0",
+  "description": "Sync bookmarks with Git repository",
+  "short_name": "GitMarks",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "bookmarks"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

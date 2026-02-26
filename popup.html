@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitMarks</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .button.secondary {
+      background-color: #008CBA;
+    }
+    .button.secondary:hover {
+      background-color: #007bb5;
+    }
+    .favorites-list {
+      margin-top: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .favorite-item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .favorite-item:hover {
+      background-color: #f5f5f5;
+    }
+    .favorite-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .favorite-url {
+      font-size: 12px;
+      color: #666;
+      word-break: break-all;
+    }
+    .breadcrumb-item {
+      cursor: pointer;
+      color: #0066cc;
+    }
+    .breadcrumb-item:hover {
+      text-decoration: underline;
+    }
+    .breadcrumb-item + .breadcrumb-item:before {
+      content: ">";
+      margin: 0 5px;
+      color: #666;
+      cursor: default;
+    }
+    .breadcrumb-item + .breadcrumb-item:hover:before {
+      text-decoration: none;
+    }
+    .sync-section {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .sync-section h2 {
+      font-size: 14px;
+      margin-top: 0;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>GitMarks</h1>
+  <button class="button secondary" id="syncToGit">Sync to Git</button>
+  <button class="button secondary" id="forceSyncToGit">Force Sync to Git</button>
+  <button class="button secondary" id="syncFromGit">Sync from Git</button>
+  
+  <div id="bookmarkStats" style="margin: 10px 0; font-size: 14px; font-weight: bold;">
+    Bookmarks: <span id="bookmarkCount">0</span>
+  </div>
+  
+  <div id="breadcrumb" style="margin: 10px 0; font-size: 12px; color: #666;">
+  </div>
+  
+  <div class="favorites-list" id="favoritesList">
+    <!-- Saved tabs will be displayed here -->
+  </div>
+  
+  <div class="sync-section">
+    <h2>Git Configuration</h2>
+    <input type="text" id="gitRepo" placeholder="Git repository URL (e.g., https://gitee.com/username/repo.git)">
+    <input type="password" id="gitToken" placeholder="Git access token">
+    <input type="text" id="gitFilePath" placeholder="File path (e.g., favorites.json)">
+  </div>
+  
+  <div class="sync-section">
+    <h2>Sync Status</h2>
+    <div id="syncStatus" style="font-size: 14px; line-height: 1.4;">
+      <p>Checking sync status...</p>
+    </div>
+    <button class="button" style="margin-top: 10px; font-size: 12px;" id="checkSyncStatus">Check Status</button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
